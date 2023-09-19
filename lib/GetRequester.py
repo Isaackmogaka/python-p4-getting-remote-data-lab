@@ -1,3 +1,4 @@
+from lib.GetRequester import GetRequester
 import requests
 import json
 
@@ -7,7 +8,10 @@ class GetRequester:
         self.url = url
 
     def get_response_body(self):
-        pass
+        response = requests.get(self.url)
+        return response.content
 
     def load_json(self):
-        pass
+        response = self.get_response_body()
+        return json.loads(response)
+
